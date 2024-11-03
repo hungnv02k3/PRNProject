@@ -1,0 +1,53 @@
+﻿<Window x:Class="Project.ManageCategory"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Project"
+        mc:Ignorable="d"
+        Title="ManageCategory" Height="700" Width="800" WindowStartupLocation="CenterScreen" Loaded="LoadView"
+        >
+    <Grid Background="LightBlue">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+        <WrapPanel Grid.Row="0" Background="LightBlue" Orientation="Vertical">
+            <Label Content="Car Information:" Foreground="Red" FontSize="25" FontWeight="Bold"/>
+            <Label Content="Car Name :" FontSize="18" />
+            <TextBox x:Name="txtName" Height="25" Width="300" Text="{Binding Path=CarName,Mode=OneWay}" DataContext="{Binding ElementName=lvCar,Path=SelectedItem}"/>
+            <Label Content="Car Producer :" FontSize="18" />
+            <TextBox x:Name="txtPro" Height="25" Width="300"/>
+            <Label Content="Car Price :" FontSize="18" />
+            <TextBox x:Name="txtPrice" Height="25" Width="300"/>
+            <Label Content="Car Remain :" FontSize="18" />
+            <TextBox x:Name="txtremain" Height="25" Width="300"/>
+            
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name="btnInsert" Content="Insert" Width="80" Height="25" Margin="10" Click="btnInsert_Click"/>
+                <Button x:Name="btnUpdate" Content="Update" Width="80" Height="25" Margin="10" Click="btnUpdate_Click"/>
+                <Button x:Name="btnDelete" Content="Delete" Width="80" Height="25" Margin="10" Click="btnDelete_Click"/>
+            </StackPanel>
+        </WrapPanel>
+        <ListView x:Name="listViewCars" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="CarID" DisplayMemberBinding="{Binding Path=CarID}" Width="50"/>
+                    <GridViewColumn Header="CarName" DisplayMemberBinding="{Binding Path=CarName}" Width="150"/>
+                    <GridViewColumn Header="CarProducer" DisplayMemberBinding="{Binding Path=CarProducer}" Width="150"/>
+                    <GridViewColumn Header="CarPrice" DisplayMemberBinding="{Binding Path=CarPrice}" Width="100"/>
+                    <GridViewColumn Header="Sold" DisplayMemberBinding="{Binding Path=Sold}" Width="50"/>
+                    <GridViewColumn Header="Remain" DisplayMemberBinding="{Binding Path=Remain}" Width="50"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button Content="Exit" Grid.Row="2" Height="25" Margin="10" Width="80" Click="Button_Click"/>
+        <Button Content="Logout" Grid.Row="2" Grid.Column="0" Height="25" Margin="80,10,510,10" Width="80" Click="Button2_Click"/>
+        <Button Content="Back" Grid.Row="2" Grid.Column="1" Height="25" Margin="10" Width="80" Click="Button_Click_1"/>
+    </Grid>
+</Window>

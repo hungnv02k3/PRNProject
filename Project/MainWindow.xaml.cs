@@ -22,11 +22,10 @@ namespace Project
         {
             InitializeComponent();
         }
-
-        private void btnManageCategory_Click(object sender, RoutedEventArgs e)
+        private void btnManageBook_Click(object sender, RoutedEventArgs e)
         {
-            ManageCategory manageCategory = new ManageCategory();
-            manageCategory.Show();
+            ManageBookWindow manageBook = new ManageBookWindow();
+            manageBook.Show();
             this.Hide();
         }
 
@@ -50,5 +49,6 @@ namespace Project
                 this.Hide();
             }
         }
+
     }
 }

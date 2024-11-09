@@ -1,12 +1,12 @@
-﻿<Window x:Class="Project.ManageEmployee"
+﻿<Window x:Class="Project.ManagerEmployees"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Project"
         mc:Ignorable="d"
-        Title="ManageEmployee" Height="450" Width="800">
-    <Grid Background="LightBlue">
+        Title="ManagerEmployees" Height="450" Width="700">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="auto"/>
@@ -33,20 +33,23 @@
                 <Button x:Name="btnDelete" Content="Delete" Width="80" Height="25" Margin="10" Click="btnDelete_Click"/>
             </StackPanel>
         </WrapPanel>
-        <ListView Grid.Row="1" Name="lvCar" SelectionChanged="lvCar_SelectionChanged" >
+        <ListView Grid.Row="1" x:Name="lvCar" SelectionChanged="lvCar_SelectionChanged" >
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="ID" Width="50" DisplayMemberBinding="{Binding Path=CarID}"/>
-                    <GridViewColumn Header="Name" Width="150" DisplayMemberBinding="{Binding Path=CarName}"/>
-                    <GridViewColumn Header="DateOfBirth" Width="150" DisplayMemberBinding="{Binding Path=CarProducer}"/>
-                    <GridViewColumn Header="Address" Width="150" DisplayMemberBinding="{Binding Path=CarPrice}"/>
-                    <GridViewColumn Header="Sold" Width="80" DisplayMemberBinding="{Binding Path=Sold}"/>
-                    <GridViewColumn Header="Remain" Width="80" DisplayMemberBinding="{Binding Path=Remain}"/>
+                    <GridViewColumn Header="EmployeeId" Width="100" DisplayMemberBinding="{Binding Path=EmployeeId}"/>
+                    <GridViewColumn Header="Name" Width="150" DisplayMemberBinding="{Binding Path=Name}"/>
+                    <GridViewColumn Header="Email" Width="150" DisplayMemberBinding="{Binding Path=Email}"/>
+                    <GridViewColumn Header="Phone" Width="100" DisplayMemberBinding="{Binding Path=Phone}"/>
+                    <GridViewColumn Header="Position" Width="100" DisplayMemberBinding="{Binding Path=Position}"/>
+                    <GridViewColumn Header="HireDate" Width="100" DisplayMemberBinding="{Binding Path=HireDate}"/>
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button Content="Exit" Grid.Row="2" Height="25" Margin="10" Width="80" Click="Button_Click"/>
-        <Button Content="Logout" Grid.Row="2" Grid.Column="0" Height="25" Margin="80,10,510,10" Width="80" Click="Button2_Click"/>
-        <Button Content="Back" Grid.Row="2" Grid.Column="1" Height="25" Margin="10" Width="80" Click="Button_Click_1"/>
+        <StackPanel Orientation="Horizontal" Grid.Row="2">
+            <Button Content="Exit" Grid.Row="2" Height="25" Margin="30" Width="80" Click="Button_Click"/>
+            <Button Content="Logout" Grid.Row="2" Grid.Column="0" Height="25" Margin="30" Width="80" Click="Button2_Click"/>
+            <Button Content="Back" Grid.Row="2" Grid.Column="1" Height="25" Margin="30" Width="80" Click="Button_Click_1"/>
+        </StackPanel>
+
     </Grid>
 </Window>

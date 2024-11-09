@@ -23,32 +23,6 @@ namespace Project
             InitializeComponent();
         }
 
-        private void btnManageCategory_Click(object sender, RoutedEventArgs e)
-        {
-            ManageCategory manageCategory = new ManageCategory();
-            manageCategory.Show();
-            this.Hide();
-        }
 
-        private void btnManageEmployee_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void btnExit_Click(object sender, RoutedEventArgs e)
-        {
-            DialogResult result = MessageBox.Show(
-                "Are you sure you want to exit?",
-             "Exit Confirmation",
-             MessageBoxButtons.YesNo,
-             MessageBoxIcon.Question
-             );
-            if (result == System.Windows.Forms.DialogResult.Yes)
-            {
-                LoginPage loginPage = new LoginPage();
-                loginPage.Show();
-                this.Hide();
-            }
-        }
     }
 }

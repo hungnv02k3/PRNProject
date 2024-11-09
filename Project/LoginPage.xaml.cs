@@ -12,12 +12,14 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Project.Models;
 using MessageBox = System.Windows.Forms.MessageBox;
+
 
 namespace Project
 {
     /// <summary>
-    /// Interaction logic for Login.xaml
+    /// Interaction logic for LoginPage.xaml
     /// </summary>
     public partial class LoginPage : Window
     {
@@ -25,16 +27,14 @@ namespace Project
         {
             InitializeComponent();
         }
-        PRNDBContext pRNDBContext = new PRNDBContext();
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-            var acc = new Account
-            {
-                UserName = txtUserName.Text,
-                Password = txtPassWord.Text
-            };
-           Account b =  pRNDBContext.GetAccounts(acc);
-            if(b != null )
+
+
+            string UserName = txtUserName.Text;
+            string Password = txtPassWord.Text;
+            
+            if (ManageEmployee.Instance.GetAccount(UserName,Password))
             {
                 MainWindow mainWindow = new MainWindow();
                 mainWindow.Show();

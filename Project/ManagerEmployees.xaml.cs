@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Project.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,47 +18,25 @@ using MessageBox = System.Windows.Forms.MessageBox;
 namespace Project
 {
     /// <summary>
-    /// Interaction logic for ManageCategory.xaml
+    /// Interaction logic for ManagerEmployees.xaml
     /// </summary>
-    public partial class ManageCategory : Window
+    public partial class ManagerEmployees : Window
     {
-        public ManageCategory()
+        public ManagerEmployees()
         {
             InitializeComponent();
-            LoadCarData();
+            this.Loaded += loadedData;
         }
-        PRNDBContext prnDB = new PRNDBContext();
-        private void LoadCarData()
-        {           
-            List<Car> cars = prnDB.GetCars();
-            listViewCars.ItemsSource = cars;
-        }
-        public void LoadView(object sender, RoutedEventArgs e) => LoadCarData();
         private void btnInsert_Click(object sender, RoutedEventArgs e)
         {
-            var car = new Car
+            DateTime? selectedDate = dtDate.SelectedDate;
+            DateOnly dateOnly = DateOnly.FromDateTime(selectedDate.Value);
+            var emp = new Employee
             {
-                CarName = txtName.Text,
-                CarProducer = txtPro.Text,
-                CarPrice = float.Parse(txtPrice.Text),
-                Sold =0,
-                Remain = int.Parse(txtremain.Text),
+                UserName = txtName.Text,
+                D
             };
-            prnDB.AddCar(car);           
-            System.Windows.MessageBox.Show("Successful!", "Success", (MessageBoxButton)MessageBoxButtons.OK, (MessageBoxImage)MessageBoxIcon.Information);
-            LoadCarData();
         }
-
-        private void btnUpdate_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void btnDelete_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-       
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             DialogResult result = MessageBox.Show(
@@ -93,6 +72,32 @@ namespace Project
                 loginPage.Show();
                 this.Hide();
             }
+        }
+        private void loadedData(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                List<Employee> categories = ManageEmployee.Instance.GetEmployees();
+                lvCar.ItemsSource = categories;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading categories: " + ex.Message);
+            }
+        }
+        private void btnUpdate_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void lvCar_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }
